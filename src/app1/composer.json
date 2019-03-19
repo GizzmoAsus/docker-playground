@@ -1,6 +1,7 @@
 {
   "require": {
       "predis/predis": "1.1.1",
-      "stage1/docker-php": "1.21"
+      "stage1/docker-php": "1.21",
+      "elasticsearch/elasticsearch": "v6.1.0"
   }
 }

@@ -71,15 +71,12 @@ services:
       - REDIS_PASSWORD=apponeredispassword
     networks:
       - backend
-
-  #phpfpm:
-  #  image: bitnami/phpfpm:latest
-
-  # mysql-master:
-  #   image: bitnami/mysql:latest
   
-  # mysql-replicant:
-  #   image: bitnami/mysql:latest
+  elasticsearch-app-one:
+    image: 'bitnami/elasticsearch:latest'
+    container_name: elasticsearch-app-one
+    networks:
+      - backend
 
 networks:
   backend:

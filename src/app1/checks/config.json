@@ -10,5 +10,8 @@
     "server": "redis-app-one",
     "password": "apponeredispassword",
     "port": 6379
+  },
+  "elasticsearch": {
+    "host": "elasticsearch-app-one:9200"
   }
 }
