@@ -1,0 +1,6 @@
+{
+  "require": {
+      "predis/predis": "1.1.1",
+      "stage1/docker-php": "1.21"
+  }
+}

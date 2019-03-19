@@ -1,0 +1,14 @@
+{
+  "mysql": {
+    "server": "mysql-app-one",
+    "username": "apponerootuser",
+    "password": "apponetestrootpassword",
+    "database": "apponetestdatabase",
+    "port": 3306
+  },
+  "redis": {
+    "server": "redis-app-one",
+    "password": "apponeredispassword",
+    "port": 6379
+  }
+}
