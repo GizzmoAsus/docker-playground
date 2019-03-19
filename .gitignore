@@ -1,0 +1,12 @@
+# Specifics
+assets/*
+*.env
+*.pem
+*.key
+*.crt
+*.conf
+
+# Generics
+.DS_Store
+*.tmp
+*.bak
