@@ -13,9 +13,8 @@ function test_redis_connection($config) {
     $client->set('foo', 'cowabunga');
     $response = $client->get('foo');
 
-    $output = json_encode(array('Redis responded with ' . $response), JSON_PRETTY_PRINT);
+    return true;
   } catch (Exception $e) {
-    $output = json_encode(array('Error connecting to redis ' . $e->getMessage()), JSON_PRETTY_PRINT);
+    return false;
   }
-  return $output;
 }

@@ -7,16 +7,8 @@ function test_mysql_connection(array $config) {
       $config['password'],
       array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
     );
-    $output = json_encode(array('Connection: ' => true), JSON_PRETTY_PRINT);
+    return true;
   } catch(PDOException $ex){
-    $output = json_encode(
-      array(
-        'outcome' => false,
-        'message' => 'Unable to connect (' . $ex->getMessage().')'
-      ),
-      JSON_PRETTY_PRINT
-    );
+    return false;
   }
-
-  return $output;
 }
