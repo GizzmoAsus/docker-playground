@@ -1,0 +1,37 @@
+{
+  "nginx": {
+    "service_up": "true",
+    "title": "Nginx Web Server / Proxy",
+    "icon": "fas fa-server",
+    "success": "Nginx is working fine, you're connected to it :)",
+    "error": "I'm not sure how this happens when your connected to it but nginx is down"
+  },
+  "php-fpm": {
+    "service_up": "true",
+    "title": "PHP-FPM Socket Service",
+    "icon": "fab fa-php",
+    "success": "PHP FPM is working fine, that's what's serving this page :)",
+    "error": "I'm not sure how this happens when your connected to it but php-fpm is down"
+  },
+  "mysql": {
+    "service_up": "false",
+    "title": "MySQL Database Service",
+    "icon": "fas fa-database",
+    "success": "MySQL is connected and responding as we knew it would",
+    "error": "It appears there's an issue connecting to MySQL .. take a looksie at the logs"
+  },
+  "redis": {
+    "service_up": "false",
+    "title": "Redis Service",
+    "icon": "fas fa-box-open",
+    "success": "Sweeeet Redis is working as expected",
+    "error": "It appears there's an issue connecting to Redis ... da logs may contain more info"
+  },
+  "elasticsearch": {
+    "service_up": "false",
+    "title": "Elasticsearch Service",
+    "icon": "fas fa-search",
+    "success": "Elasticsearch is connected and responding just fine",
+    "error": "Hmmmm can't seem to connect to Elasticsearch, anything in the logs?"
+  }
+}
