@@ -5,6 +5,7 @@ assets/*
 *.key
 *.crt
 *.conf
+**/vendor/
 
 # Generics
 .DS_Store
