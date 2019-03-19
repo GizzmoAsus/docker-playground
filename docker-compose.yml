@@ -1,0 +1,87 @@
+version: '3'
+
+services:
+  # traefik:
+  #   image: traefik:1.5.4
+  #   restart: always
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   networks:
+  #     - proxy
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - /config/traefik/traefik.toml:/traefik.toml
+  #     - /config/traefik/acme.json:/acme.json
+
+  nginx-app-one:
+    image: bitnami/nginx:latest
+    container_name: nginx-app-one
+    networks:
+      - web
+    depends_on:
+      - phpfpm-app-one
+    ports:
+      - 80:8080
+      - 443:8443
+    volumes:
+      - ./src/app1:/app
+      - ./config/nginx/app1-vhost.conf:/opt/bitnami/nginx/conf/vhosts/default-vhost.conf
+      - ./config/certs/kelcode.co.uk/fullchain1.pem:/certs/cert.pem:ro
+      - ./config/certs/kelcode.co.uk/privkey1.pem:/certs/key.pem:ro
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:dev.kelcode.co.uk"
+      - "traefik.basic.port=9000"
+      - "traefik.basic.protocol=http"
+      - "traefik.admin.frontend.rule=Host:admin-dev.kelcode.co.uk"
+      - "traefik.admin.protocol=https"
+      - "traefik.admin.port=9443"
+
+  phpfpm-app-one:
+    image: bitnami/php-fpm:latest
+    container_name: phpfpm-app-one
+    depends_on:
+      - mysql-app-one
+    networks:
+      - web
+      - backend
+    volumes:
+      - ./src/app1:/app
+    labels:
+      - "traefik.enable=false"
+
+  mysql-app-one:
+    image: bitnami/mysql:latest
+    container_name: mysql-app-one
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT_USER=apponerootuser
+      - MYSQL_ROOT_PASSWORD=apponetestrootpassword
+      - MYSQL_USER=apponetestuser
+      - MYSQL_PASSWORD=apponetestuserpassword
+      - MYSQL_DATABASE=apponetestdatabase
+  
+  redis-app-one:
+    image: bitnami/redis:latest
+    container_name: redis-app-one
+    environment: 
+      - REDIS_PASSWORD=apponeredispassword
+    networks:
+      - backend
+
+  #phpfpm:
+  #  image: bitnami/phpfpm:latest
+
+  # mysql-master:
+  #   image: bitnami/mysql:latest
+  
+  # mysql-replicant:
+  #   image: bitnami/mysql:latest
+
+networks:
+  backend:
+  web:
+
